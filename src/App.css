@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Radio Canada Big";
+}
+
+.app-container {
+  display: flex;
+}
+
+.content-container {
+  flex-grow: 1;
+}
+
+.sidebar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 25rem;
+  background-color: #f8f9fa;
+  overflow-y: auto;
+  transition: width 0.3s;
+}
+
+/* .app-container.sidebar-closed .content-container {
+  margin-left: 6rem;
+} */
+
+.app-container.sidebar-closed .sidebar-container {
+  width: 6rem;
+}
+
+.content-container {
+  transition: margin-left 0.5s;
+  margin-top: 5rem; /* Ensures content starts after the Navbar */
+}
+
+/* .content {
+  padding: 1rem;
+} */
+.btn-submit{
+  background-color: rgb(116, 203, 209);
+}
+.btn-submit:hover{
+  background-color: rgb(147, 219, 250);
+}
+.bg-box{
+  background-color: rgb(237, 249, 255);
+}

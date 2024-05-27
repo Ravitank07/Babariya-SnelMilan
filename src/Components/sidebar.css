@@ -1,0 +1,31 @@
+.list{
+    color: rgb(0, 0, 0);
+}
+.list:hover{
+    background-color: rgb(241, 255, 255);
+    border-right: 5px solid rgb(0, 0, 0);
+}
+.nest-list:hover{
+    background-color: rgb(223, 249, 255);
+    border-right: 5px solid rgb(0, 0, 0);
+}
+.sidebar-bg{
+    background-color: rgb(116, 203, 209) !important;
+  }
+  
+  .sidebar-bg {
+    background-color: #f8f9fa;
+    transition: width 0.5s;
+  }
+  
+  .sidebar .list:hover {
+    background-color: #e2e6ea;
+  }
+  
+  .sidebar .nest-list:hover {
+    background-color: #e2e6ea;
+  }
+  
+  .sidebar .rotate-180 {
+    transform: rotate(180deg);
+  }

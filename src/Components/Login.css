@@ -1,0 +1,15 @@
+.main{
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgb(66, 82, 90);
+}
+.username::placeholder{
+    font-size: 1.6rem;
+}
+.password::placeholder{
+    font-size: 1.6rem;
+}
+input.username,
+input.password {
+    font-size: 2rem; 
+    padding: 1rem; 
+}
