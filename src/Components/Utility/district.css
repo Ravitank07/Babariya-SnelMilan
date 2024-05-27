@@ -1,0 +1,53 @@
+.district_main_container {
+  background-color: rgb(42 59 80);
+  color: #fff;
+  height: 100vh;
+}
+
+.search_input {
+  outline: none;
+  filter: drop-shadow(0px 0px 4px black);
+}
+
+.search_input:focus {
+  filter: drop-shadow(0px 0px 4px white);
+}
+
+.search_btn {
+  background-color: rgb(249 104 97);
+  padding: 8px 20px;
+  filter: drop-shadow(0px 0px 4px rgb(249 104 97));
+}
+
+.data_tbl {
+  width: 50%;
+  margin-top: 50px;
+  font-size: 20px;
+}
+
+.data_tbl thead {
+  background-color: rgb(143 143 143 / 57%);
+}
+
+.data_tbl thead tr th {
+  padding: 10px;
+}
+
+.data_tbl tbody tr,
+.data_tbl thead {
+  border: 2px solid #9ca0b5;
+  filter: drop-shadow(0px 0px 4px white);
+}
+
+.data_tbl tbody tr {
+  background-color: rgb(42 59 80 / 82%);
+  text-align: center;
+}
+
+.data_tbl tbody tr td {
+  padding: 20px;
+}
+
+.end_btn {
+  font-size: xx-large;
+}
