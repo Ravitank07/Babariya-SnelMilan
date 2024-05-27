@@ -34,7 +34,6 @@
 
 .content-container {
   transition: margin-left 0.5s;
-  margin-top: 5rem; /* Ensures content starts after the Navbar */
 }
 
 /* .content {
