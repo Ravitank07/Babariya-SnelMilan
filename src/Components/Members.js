@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaUserPlus } from 'react-icons/fa';
 import Modal from 'react-modal';
 import './Members.css';
@@ -24,6 +24,21 @@ const Members = () => {
   const [selectedDistrict, setSelectedDistrict] = useState('Select District');
   const [selectedEducation, setSelectedEducation] = useState('Select Education');
   const [selectedBloodGroup, setSelectedBloodGroup] = useState('Select Blood Group');
+  
+  const [districts, setDistricts] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:8000/api/district/viewAll')
+      .then(response => response.json())
+      .then(data => {
+        if (Array.isArray(data)) {
+          setDistricts(data);
+        } else {
+          console.error('Fetched data is not an array:', data);
+        }
+      })
+      .catch(error => console.error('Error fetching districts:', error));
+  }, []);
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -173,36 +188,37 @@ const Members = () => {
             </div>
             {/* F-9 */}
             <div className='flex items-center my-4 z-[43]'>
-              <label className="mr-5 font-semibold mt-4">Taluka Name : </label>
+              <label className="mr-5 font-semibold mt-4">Taluko Name : </label>
               <div className="relative" id='dropDownButton'>
-                <div onClick={toggleDownTaluko} className='border-solid border-black-200 border-[2px] px-5 py-2 rounded cursor-pointer font-bold flex justify-between w-[20045] items-center bg-white'>
+                <div onClick={toggleDownTaluko} className='border-solid border-black-200 border-[2px] px-5 py-2 rounded cursor-pointer font-bold flex justify-between w-[450px] items-center bg-white'>
                   {selectedTaluka}
                   <IoMdArrowDropdown className='text-xl' id="dropdown" />
                 </div>
                 {dropdownOpenTaluko && (
                   <div className='rounded border-[1px] border-grey-300 bg-white absolute top-[30px] w-[450px] shadow-md'>
-                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectTaluka('Taluka Name 1')}>Taluka Name 1</div>
-                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectTaluka('Taluka Name 2')}>Taluka Name 2</div>
-                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectTaluka('Taluka Name 3')}>Taluka Name 3</div>
-                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectTaluka('Taluka Name 4')}>Taluka Name 4</div>
+                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectTaluka('Taluko Name 1')}>Taluko Name 1</div>
+                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectTaluka('Taluko Name 2')}>Taluko Name 2</div>
+                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectTaluka('Taluko Name 3')}>Taluko Name 3</div>
+                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectTaluka('Taluko Name 4')}>Taluko Name 4</div>
                   </div>
                 )}
               </div>
             </div>
             {/* F-10 */}
             <div className='flex items-center my-4 z-[42]'>
-              <label className="mr-5 font-semibold mt-4">District Name : </label>
+              <label className="mr-5 font-semibold mt-4">District : </label>
               <div className="relative" id='dropDownButton'>
-                <div onClick={toggleDownDistrict} className='border-solid border-black-200 border-[2px] px-5 py-2 rounded cursor-pointer font-bold flex justify-between w-[245px] items-center bg-white'>
+                <div onClick={toggleDownDistrict} className='border-solid border-black-200 border-[2px] px-5 py-2 rounded cursor-pointer font-bold flex justify-between w-[450px] items-center bg-white'>
                   {selectedDistrict}
                   <IoMdArrowDropdown className='text-xl' id="dropdown" />
                 </div>
                 {dropdownOpenDis && (
                   <div className='rounded border-[1px] border-grey-300 bg-white absolute top-[30px] w-[450px] shadow-md'>
-                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectDistrict('District Name 1')}>District Name 1</div>
-                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectDistrict('District Name 2')}>District Name 2</div>
-                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectDistrict('District Name 3')}>District Name 3</div>
-                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectDistrict('District Name 4')}>District Name 4</div>
+                    {districts.map((district) => (
+                      <div key={district.id} className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectDistrict(district.name)}>
+                        {district.name}
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>
@@ -217,10 +233,10 @@ const Members = () => {
                 </div>
                 {dropdownOpenEducation && (
                   <div className='rounded border-[1px] border-grey-300 bg-white absolute top-[30px] w-[450px] shadow-md'>
-                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectEducation('Education Level 1')}>Education Level 1</div>
-                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectEducation('Education Level 2')}>Education Level 2</div>
-                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectEducation('Education Level 3')}>Education Level 3</div>
-                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectEducation('Education Level 4')}>Education Level 4</div>
+                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectEducation('Education 1')}>Education 1</div>
+                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectEducation('Education 2')}>Education 2</div>
+                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectEducation('Education 3')}>Education 3</div>
+                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectEducation('Education 4')}>Education 4</div>
                   </div>
                 )}
               </div>
@@ -229,7 +245,7 @@ const Members = () => {
             <div className='flex items-center my-4 z-[40]'>
               <label className="mr-5 font-semibold mt-4">Blood Group : </label>
               <div className="relative" id='dropDownButton'>
-                <div onClick={toggleDownBloodGroup} className='border-solid border-black-200 border-[2px] px-5 py-2 rounded cursor-pointer font-bold flex justify-between w-4500px] items-center bg-white'>
+                <div onClick={toggleDownBloodGroup} className='border-solid border-black-200 border-[2px] px-5 py-2 rounded cursor-pointer font-bold flex justify-between w-[450px] items-center bg-white'>
                   {selectedBloodGroup}
                   <IoMdArrowDropdown className='text-xl' id="dropdown" />
                 </div>
@@ -239,21 +255,20 @@ const Members = () => {
                     <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectBloodGroup('A-')}>A-</div>
                     <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectBloodGroup('B+')}>B+</div>
                     <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectBloodGroup('B-')}>B-</div>
-                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectBloodGroup('O+')}>O+</div>
-                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectBloodGroup('O-')}>O-</div>
                     <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectBloodGroup('AB+')}>AB+</div>
                     <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectBloodGroup('AB-')}>AB-</div>
+                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectBloodGroup('O+')}>O+</div>
+                    <div className='cursor-pointer hover:bg-gray-200 p-5' onClick={() => selectBloodGroup('O-')}>O-</div>
                   </div>
                 )}
               </div>
             </div>
           </div>
         </form>
-        <div className="modal-footer">
-          <button className="submit-button ml-auto">Submit</button>
+        <div className="button-container">
+          <button className="submit-button" type="submit">Save Member</button>
         </div>
       </Modal>
-      <h1>Hello</h1>
     </>
   );
 };
