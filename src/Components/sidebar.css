@@ -1,16 +1,17 @@
 .list{
-    color: rgb(0, 0, 0);
+    color: #fff;
 }
 .list:hover{
     background-color: rgb(241, 255, 255);
     border-right: 5px solid rgb(0, 0, 0);
+    color: #000;
 }
 .nest-list:hover{
     background-color: rgb(223, 249, 255);
     border-right: 5px solid rgb(0, 0, 0);
 }
 .sidebar-bg{
-    background-color: rgb(116, 203, 209) !important;
+    background-color: rgb(161 103 239) !important;
   }
   
   .sidebar-bg {
