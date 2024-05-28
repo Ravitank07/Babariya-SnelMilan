@@ -78,8 +78,8 @@ const Members = () => {
   };
 
   return (
-    <>
-      <div className='ml-auto mr-[2rem] my-[2rem] bg-black text-white w-[14rem] flex items-center px-7 py-4 btn-submit rounded-lg'>
+    <div className='py-20'>
+      <div className='ml-auto mr-[2rem] my-[2rem] bg-black text-white w-[14rem] flex justify-center items-center px-7 py-4 btn-submit rounded-lg'>
         <FaUserPlus className='text-[14px] mr-3 text-white' />
         <button onClick={openModal}><p className='text-white font-semibold'>Add Member</p></button>
       </div>
@@ -253,8 +253,7 @@ const Members = () => {
           <button className="submit-button ml-auto">Submit</button>
         </div>
       </Modal>
-      <h1>Hello</h1>
-    </>
+    </div>
   );
 };
 

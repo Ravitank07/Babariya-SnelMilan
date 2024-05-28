@@ -1,12 +1,18 @@
 .district_main_container {
-  background-color: rgb(42 59 80);
-  color: #fff;
+  /* background-color: rgb(42 59 80); */
+  /* color: #6798E1; */
   height: 100vh;
+  overflow: auto;
+}
+
+.district_main_container div h1 {
+  color: #0052CC;
 }
 
 .search_input {
   outline: none;
-  filter: drop-shadow(0px 0px 4px black);
+  border: 1px solid #c2c2cb;
+  border-radius: 5px;
 }
 
 .search_input:focus {
@@ -14,33 +20,37 @@
 }
 
 .search_btn {
-  background-color: rgb(249 104 97);
+  background-color: #0099ff;
+  border-radius: 5px;
   padding: 8px 20px;
-  filter: drop-shadow(0px 0px 4px rgb(249 104 97));
+  /* filter: drop-shadow(0px 0px 4px #0099ff); */
 }
 
 .data_tbl {
-  width: 50%;
+  width: 100%;
   margin-top: 50px;
   font-size: 20px;
 }
 
 .data_tbl thead {
-  background-color: rgb(143 143 143 / 57%);
+  background-color: #F0F0F9;
 }
 
 .data_tbl thead tr th {
   padding: 10px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  font-weight: 100 !important;
 }
 
 .data_tbl tbody tr,
 .data_tbl thead {
-  border: 2px solid #9ca0b5;
+  border: 1px solid #c2c2cb;
   filter: drop-shadow(0px 0px 4px white);
 }
 
 .data_tbl tbody tr {
-  background-color: rgb(42 59 80 / 82%);
+  background-color: #fff;
   text-align: center;
 }
 
@@ -49,5 +59,5 @@
 }
 
 .end_btn {
-  font-size: xx-large;
+  font-size: x-large;
 }

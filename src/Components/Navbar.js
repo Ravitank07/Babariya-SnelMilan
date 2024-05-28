@@ -13,10 +13,10 @@ const Navbar = ({ open, visible }) => {
 
   return (
     <>
-      <nav className={`navbar fixed top-0 left-0 bg-black text-white px-4 py-2 z-50 duration-500 h-20 ${open ? 'ml-[20rem]' : 'ml-[6rem]'} w-full flex items-center justify-between`}>
-        <div className="breadcrumb text-white">
+      <nav className={`navbar fixed top-0 left-0 text-black px-4 py-2 z-50 duration-500 h-20 ${open ? 'ml-[16rem]' : 'ml-[6rem]'} w-full flex items-center justify-between`}>
+        <div className="breadcrumb text-black">
           {pathnames.length > 0 && pathnames[0] !== "" && ( // Conditionally render Home link
-            <Link to="/home" className="text-white hover:underline">
+            <Link to="/home" className="text-black hover:underline">
               <IoHome className='text-2xl' />
             </Link>
           )}
@@ -28,19 +28,19 @@ const Navbar = ({ open, visible }) => {
               return (
                 <span key={to}>
                   <span className="mx-2">/</span>
-                  <Link to={to} className="text-white hover:underline">
+                  <Link to={to} className="text-black hover:underline">
                     Utility
                   </Link>
                 </span>
               );
             }
             return (
-              <span key={to}>
+              <span key={to} className='text-2xl'>
                 <span className="mx-2">/</span>
                 {isLast ? (
                   <span>{value.charAt(0).toUpperCase() + value.slice(1)}</span>
                 ) : (
-                  <Link to={to} className="text-white hover:underline">
+                  <Link to={to} className="text-black hover:underline">
                     {value.charAt(0).toUpperCase() + value.slice(1)}
                   </Link>
                 )}

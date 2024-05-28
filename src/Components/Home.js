@@ -4,7 +4,7 @@ import './Home.css'
 const Home = () => {
   return (
     <>
-      <div className='flex justify-start'>
+      <div className='flex justify-start pl-4 p-20'>
         <div className='main-box'>
           <div className='box-1'>
             <h1>Today's User</h1>

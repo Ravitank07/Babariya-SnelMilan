@@ -3,7 +3,7 @@ import axios from "axios";
 import "./district.css";
 import { CiEdit } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
-import { FaSearchLocation, FaGripLinesVertical } from "react-icons/fa";
+import { IoSearch } from "react-icons/io5";
 
 const District = () => {
   const [data, setData] = useState([]);
@@ -118,26 +118,32 @@ const District = () => {
       <div className="mt-12">
         <h1 className="text-[3rem]">District</h1>
 
-        <input
-          className="w-[20rem] p-2 mr-5 text-black search_input"
-          type="text"
-          placeholder="Enter District Here For Add"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-        />
-        <button onClick={handleSubmit} className="search_btn">
-          Add
-        </button>
+        <div className="flex items-center justify-between mt-5">
+          <div>
+            <input
+              className="w-[20rem] p-2 mr-5 text-black search_input"
+              type="text"
+              placeholder="Enter District Here For Add"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+            />
+            <button onClick={handleSubmit} className="search_btn">
+              Add
+            </button>
+          </div>
 
-        <div className="mt-5 w-fit relative">
-          <input
-            className="w-[20rem] p-2 text-black search_input"
-            type="text"
-            value={searchQuery}
-            onChange={handleSearch}
-            placeholder="Search District"
-          />
-          <FaSearchLocation className="absolute text-cyan-700 text-xl top-[0.6rem] right-[0.5rem]" />
+          <div>
+            <div className="w-fit relative">
+              <input
+                className="w-[20rem] p-2 text-black search_input"
+                type="text"
+                value={searchQuery}
+                onChange={handleSearch}
+                placeholder="Search District"
+              />
+              <IoSearch className="absolute text-xl top-[0.6rem] right-[0.5rem]" />
+            </div>
+          </div>
         </div>
 
         <table className="data_tbl">
@@ -145,7 +151,8 @@ const District = () => {
             <tr>
               <th>No.</th>
               <th>District Name</th>
-              <th>Update or Delete</th>
+              <th>Update</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -153,11 +160,12 @@ const District = () => {
               <tr key={i._id}>
                 <td>{index + 1}</td>
                 <td>{i.name}</td>
-                <td className="flex justify-center items-center">
+                <td>
                   <button onClick={() => handleUpdate(i._id)}>
                     <CiEdit className="end_btn" />
                   </button>
-                  <FaGripLinesVertical />
+                </td>
+                <td>
                   <button onClick={() => handleDelete(i._id)}>
                     <MdDelete className="end_btn" />
                   </button>

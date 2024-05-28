@@ -3,6 +3,8 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Radio Canada Big";
+  font-size: 13px;
+  font-weight: 100;
 }
 
 .app-container {
@@ -36,15 +38,15 @@
   transition: margin-left 0.5s;
 }
 
-/* .content {
-  padding: 1rem;
-} */
-.btn-submit{
+.content {
+  background-color: #F0F0F9;
+}
+.btn-submit {
   background-color: rgb(116, 203, 209);
 }
-.btn-submit:hover{
+.btn-submit:hover {
   background-color: rgb(147, 219, 250);
 }
-.bg-box{
+.bg-box {
   background-color: rgb(237, 249, 255);
 }
