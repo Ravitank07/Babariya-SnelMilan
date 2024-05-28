@@ -15,6 +15,7 @@ import Relation from './Components/Utility/Relation';
 import BloodGroup from './Components/Utility/BloodGroup';
 import Occupation from './Components/Utility/Occupation';
 import Commitee from './Components/Utility/Commitee';
+import CommiteeMembers from './Components/CommiteeMembers';
 import Navbar from './Components/Navbar';
 
 const AppLayout = ({ children }) => {
@@ -52,6 +53,7 @@ function App() {
         <Route exact path='/bloodGroup' element={<AppLayout><BloodGroup /></AppLayout>} />
         <Route exact path='/occupation' element={<AppLayout><Occupation /></AppLayout>} />
         <Route exact path='/commitee' element={<AppLayout><Commitee /></AppLayout>} />
+        <Route exact path='/commitee-members' element={<AppLayout><CommiteeMembers /></AppLayout>} />
       </Routes>
     </Router>
   );

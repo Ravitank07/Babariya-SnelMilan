@@ -1,0 +1,10 @@
+.relation_main_container {
+  /* background-color: rgb(42 59 80); */
+  /* color: #6798E1; */
+  height: 100vh;
+  overflow: auto;
+}
+
+.relation_main_container div h1 {
+  color: #0052cc;
+}

@@ -61,7 +61,7 @@ const OTPPage = () => {
 
     return (
         <section className="h-screen flex items-center justify-center p-[10rem]">
-            <div className="w-full max-w-4xl bg-box py-[7rem] px-[4rem] main">
+            <div className="w-full max-w-3xl py-[7rem] px-[4rem] main">
                 <form onSubmit={otpLogin}>
                     <div className="flex flex-col items-center justify-center ">
                         <p className="mb-4 text-[3rem]">Enter OTP</p>
@@ -82,7 +82,7 @@ const OTPPage = () => {
                     <div>
                         <button
                             type="submit"
-                            className="w-full flex justify-center py-3 px-[2rem] border border-transparent rounded-md shadow-sm text-2xl font-medium text-white btn-submit focus:outline-none focus:ring-2 focus:ring-offset-2"
+                            className="w-full flex justify-center py-3 px-[2rem] border border-transparent rounded-md shadow-sm text-2xl font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 vrf_btn"
                             disabled={otp.join('').length !== 6}
                         >
                             Verify OTP
@@ -92,11 +92,9 @@ const OTPPage = () => {
                 {error && (
                     <p className="mt-2 text-center text-[1.5rem] text-red-500">{error}</p>
                 )}
-                <p className="mt-2 text-center text-[1.5rem] text-gray-600">
+                <p className="mt-2 text-center text-[1.2rem] text-gray-600">
                     Didn't receive the OTP?{" "}
-                    <Link to="/resend-otp" className="text-black hover:text-indigo-500">
                         Resend OTP
-                    </Link>
                 </p>
             </div>
         </section>

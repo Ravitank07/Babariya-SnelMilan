@@ -141,7 +141,7 @@ const District = () => {
                 onChange={handleSearch}
                 placeholder="Search District"
               />
-              <IoSearch className="absolute text-xl top-[0.6rem] right-[0.5rem]" />
+              <IoSearch className="absolute text-xl top-[1.1rem] right-[1.2rem]" />
             </div>
           </div>
         </div>
