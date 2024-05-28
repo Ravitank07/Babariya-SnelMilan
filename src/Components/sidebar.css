@@ -1,32 +1,99 @@
-.list{
-    color: #fff;
+
+
+.nest-list,
+.list {
+  /* color: #fff; */
+  color: #000;
+  font-size: 13xpx;
+  font-weight: 100;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 12px;
+  transition: 0.5s;
+  position: relative;
 }
-.list:hover{
-    background-color: rgb(241, 255, 255);
-    border-right: 5px solid rgb(0, 0, 0);
-    color: #000;
+/* .nest-list::before,
+.list::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  transition: 0.5s;
+  transform: scaleY(1.2);
+  opacity: 0;
 }
-.nest-list:hover{
-    background-color: rgb(223, 249, 255);
-    border-right: 5px solid rgb(0, 0, 0);
+.nest-list:hover::before,
+.list:hover::before {
+  opacity: 1;
+  transform: scaleY(1);
 }
-.sidebar-bg{
-    background-color: rgb(161 103 239) !important;
-  }
-  
-  .sidebar-bg {
-    background-color: #f8f9fa;
-    transition: width 0.5s;
-  }
-  
-  .sidebar .list:hover {
-    background-color: #e2e6ea;
-  }
-  
-  .sidebar .nest-list:hover {
-    background-color: #e2e6ea;
-  }
-  
-  .sidebar .rotate-180 {
-    transform: rotate(180deg);
-  }
+.nest-list::after,
+.list::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s;
+  transform: scaleY(0);
+  z-index: -1;
+}
+.nest-list:hover::after,
+.list:hover:after {
+  background: #0099ff;
+  transform: scaleY(1);
+} */
+
+.list:hover,
+.nest-list:hover {
+  color: #6999E1;
+}
+
+.sidebar-bg {
+  box-shadow: 0 0 #6f86e621, 0 4px 16px #b3bbc35c;
+  color: #000;
+  transition: width 0.5s;
+  border-right: 1px solid #e3e3f7;
+}
+
+.sidebar .list:hover {
+  background-color: #e2e6ea;
+}
+
+.sidebar .nest-list:hover {
+  background-color: #e2e6ea;
+}
+
+.sidebar .rotate-180 {
+  transform: rotate(180deg);
+}
+
+.arrow_in_out {
+  background-color: #0099ff;
+}
+.arrow_in_out:hover {
+  background-color: rgb(255, 255, 255);
+  color: #0099ff;
+}
+
+.submenu_wrapper {
+  padding-left: 30px;
+}
+
+.submenu_wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.submenu_wrapper::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+.submenu_wrapper::-webkit-scrollbar-thumb:hover {
+  background: #fff;
+}
