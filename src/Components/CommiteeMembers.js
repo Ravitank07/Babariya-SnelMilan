@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Modal from "./Modal/Modal";
+import BreadCrumb from './Modal/BreadCrumb'
 
 const CommiteeMembers = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -14,7 +15,9 @@ const CommiteeMembers = () => {
 
   return (
     <div className="h-screen overflow-auto p-8">
-      <div className="m-12">
+      <div className="pt-16">
+      <BreadCrumb/>
+
         <div>
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded"

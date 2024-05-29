@@ -4,6 +4,7 @@ import "./commitee.css";
 import { CiEdit } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
+import BreadCrumb from '../Modal/BreadCrumb'
 
 const Commitee = () => {
   const [data, setData] = useState([]);
@@ -114,9 +115,8 @@ const Commitee = () => {
   );
   return (
     <div className="commitee_main_container p-8">
-      <div className="mt-12">
-        <h1 className="text-[3rem]">Commitee</h1>
-
+      <div className="mt-16">
+        <BreadCrumb/>
         <div className="flex items-center justify-between mt-5">
           <div>
             <input
