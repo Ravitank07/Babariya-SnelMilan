@@ -43,7 +43,7 @@ const Commitee = () => {
         const response = await axios.put(
           `http://localhost:8000/api/commitee/update/${editId}`,
           {
-            name: inputValue,
+            commitee: inputValue,
           },
           {
             headers: {
@@ -66,7 +66,7 @@ const Commitee = () => {
         const response = await axios.post(
           "http://localhost:8000/api/commitee/add",
           {
-            name: inputValue,
+            commitee: inputValue,
           },
           {
             headers: {
@@ -86,7 +86,7 @@ const Commitee = () => {
     const editName = data.find((i) => {
       return i._id === id;
     });
-    setInputValue(editName.name);
+    setInputValue(editName.commitee);
     setEditId(id);
     setEdit(true);
   };
@@ -110,7 +110,7 @@ const Commitee = () => {
   };
 
   const filteredData = data.filter((item) =>
-    item.name.toLowerCase().includes(searchQuery.toLowerCase())
+    item.commitee?.toLowerCase().includes(searchQuery.toLowerCase())
   );
   return (
     <div className="commitee_main_container p-8">
@@ -158,7 +158,7 @@ const Commitee = () => {
             {filteredData.map((i, index) => (
               <tr key={i._id}>
                 <td>{index + 1}</td>
-                <td>{i.name}</td>
+                <td>{i.commitee}</td>
                 <td>
                   <button onClick={() => handleUpdate(i._id)}>
                     <CiEdit className="end_btn" />
