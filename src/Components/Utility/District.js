@@ -4,6 +4,7 @@ import "./district.css";
 import { CiEdit } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
+import BreadCrumb from '../Modal/BreadCrumb';
 
 const District = () => {
   const [data, setData] = useState([]);
@@ -13,7 +14,7 @@ const District = () => {
   const [editId, setEditId] = useState(null);
 
   const Authorization =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NGYwZTcxNmJlMGEyYWY0NmZkNjg5NyIsImlhdCI6MTcxNjc5MzAwMCwiZXhwIjoxNzE3MDUyMjAwfQ.WANtKZKls-9zoplsdQu3wkcuJ2Gj9QuOe3-2ZHvb368";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NGYxYzE5YjAxNGIyZGMwYjE3MzRhZiIsImlhdCI6MTcxNjk4MzIzNSwiZXhwIjoxODExNjU2MDM1fQ.9RMAqVZRApDPnLSzjcQ1mmJa7Z9pdPiZn4DGI0gVHFg";
 
   useEffect(() => {
     fetchData();
@@ -37,7 +38,7 @@ const District = () => {
 
   const handleSubmit = async () => {
     if (!inputValue) {
-      alert("Please Enter Ditrict First");
+      alert("Please Enter District First");
     } else if (inputValue && edit) {
       try {
         const response = await axios.put(
@@ -110,14 +111,13 @@ const District = () => {
   };
 
   const filteredData = data.filter((item) =>
-    item.name.toLowerCase().includes(searchQuery.toLowerCase())
+    item.name?.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
     <div className="district_main_container p-8">
-      <div className="mt-12">
-        <h1 className="text-[3rem]">District</h1>
-
+      <div className="mt-16">
+        <BreadCrumb/>
         <div className="flex items-center justify-between mt-5">
           <div>
             <input

@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "./sidebar.css";
 import logo from "../Images/logo.png";
-// import { HiOutlineArrowLongRight } from "react-icons/hi2";
-import { FaAngleRight } from "react-icons/fa";
 import { MdDashboardCustomize } from "react-icons/md";
 import { BsChevronDown } from "react-icons/bs";
 import { BsPersonCircle } from "react-icons/bs";
@@ -10,7 +8,10 @@ import { IoHome } from "react-icons/io5";
 import { GrOrganization } from "react-icons/gr";
 import { MdOutlineGroups2 } from "react-icons/md";
 import { Link } from "react-router-dom";
-
+import { BsNewspaper } from "react-icons/bs";
+import { TiBusinessCard } from "react-icons/ti";
+import { TbReportSearch } from "react-icons/tb";
+import { TbLogout } from "react-icons/tb";
 const Sidebar = ({ open, setOpen }) => {
   const [submenuOpenIndex, setSubmenuOpenIndex] = useState(null);
 
@@ -46,9 +47,10 @@ const Sidebar = ({ open, setOpen }) => {
       icon: <MdOutlineGroups2 className="text-[1.5rem]" />,
     },
 
-    { title: "News/Message", path: "/news" },
-    { title: "Business Detail", path: "/business" },
-    { title: "Reports", path: "/reports" },
+    { title: "News/Message", path: "/news",icon:<BsNewspaper className="text-[1.5rem]"/>},
+    { title: "Business Detail", path: "/business",icon:<TiBusinessCard className="text-[1.5rem]"/> },
+    { title: "Reports", path: "/reports",icon:<TbReportSearch className="text-[1.5rem]"/> },
+    { title: "Logout", path: "/logout",icon:<TbLogout className="text-[1.5rem]"/> }
   ];
 
   const toggleSubmenu = (index) => {
@@ -58,27 +60,22 @@ const Sidebar = ({ open, setOpen }) => {
   return (
     <div>
       <div
-        className={`sidebar-bg h-screen py-5 pt-8 ${
+        className={`sidebar-bg h-screen py-5 pt-3 ${
           open ? "w-[22rem]" : "w-[6rem]"
         } relative duration-500 z-30`}
       >
-        <FaAngleRight
-          className={`bg-slate-100 arrow_in_out text-black text-[3rem] rounded-full absolute -right-4 top-[9rem] p-1 border-slate-100 cursor-pointer ${
-            open && "rotate-180"
-          }`}
-          onClick={() => setOpen(!open)}
-        />
-        <div className="inline-flex items-center logo_wrapper">
+    
+        <div className="inline-flex items-center logo_wrapper mt-1">
           <img
             src={logo}
             className={`${
-              open ? "w-[6rem]" : "w-[6rem]"
-            } text-sm rounded cursor-pointer block float-left mr-2 duration-500 ${
+              open ? "w-[5rem]" : "w-[4rem]"
+            } text-sm rounded cursor-pointer float-left mr-2 ml-5 duration-500 ${
               open && "rotate-[360deg]"
             }`}
           />
           <h1
-            className={`text-black origin-left font-medium text-2xl duration-300 ${
+            className={`text-black origin-left font-medium text-[2.3rem]l duration-300 ${
               !open && "scale-0"
             }`}
           >
@@ -86,7 +83,7 @@ const Sidebar = ({ open, setOpen }) => {
           </h1>
         </div>
 
-        <ul className="pt-[4rem] px-6 sidebar_main">
+        <ul className="pt-[0.1rem] px-6 sidebar_main">
           {Menus.map((menu, index) => (
             <React.Fragment key={index}>
               <Link to={menu.path}>
