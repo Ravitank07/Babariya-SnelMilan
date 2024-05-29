@@ -4,6 +4,7 @@ import "./village.css"
 import { CiEdit } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
+import BreadCrumb from '../Modal/BreadCrumb'
 
 const Village = () => {const [data, setData] = useState([]);
   const [inputValue, setInputValue] = useState("");
@@ -12,7 +13,7 @@ const Village = () => {const [data, setData] = useState([]);
   const [editId, setEditId] = useState(null);
 
   const Authorization =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NGYwZTcxNmJlMGEyYWY0NmZkNjg5NyIsImlhdCI6MTcxNjc5MzAwMCwiZXhwIjoxNzE3MDUyMjAwfQ.WANtKZKls-9zoplsdQu3wkcuJ2Gj9QuOe3-2ZHvb368";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NGYxYzE5YjAxNGIyZGMwYjE3MzRhZiIsImlhdCI6MTcxNjg5NjMzMiwiZXhwIjoxNzE3MTU1NTMyfQ.xRpGkfWSlhnVE-nXaA5Jxp-XxmoHOlsjwQUWpRW6gBkXxmoHOlsjwQUWpRW6gBk";
 
   useEffect(() => {
     fetchData();
@@ -113,8 +114,9 @@ const Village = () => {const [data, setData] = useState([]);
   return (
     <div>
       <div className="taluka_main_container p-8">
-      <div className="mt-12">
-        <h1 className="text-[3rem]">Village</h1>
+      <div className="mt-16">
+      <BreadCrumb/>
+
 
         <div className="flex items-center justify-between mt-5">
           <div>

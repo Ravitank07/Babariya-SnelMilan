@@ -1,21 +1,11 @@
-.main-box{
-    width: 200px;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 20px;
-    box-shadow: 3px 3px 10px black;
-    border-radius: 10px;
-}
-
 .box-1{
-    font-size: 16px;
+    background-color: #6ea8ee;
+    border-radius: 10px;
+    color: white;
+
 }
 .box-2{
-    font-size: 34px;
-    padding: 4px 5px 4px 10px;
+    background-color: #41df51;
     border-radius: 10px;
-    background-color: rgb(154, 223, 228);
-
+    color: white;
 }

@@ -5,6 +5,8 @@ import { MdDelete } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
 import { CiEdit } from "react-icons/ci";
 import "./commiteemembers.css";
+import BreadCrumb from './Modal/BreadCrumb'
+
 
 const CommiteeMembers = () => {
   const [commiteeMemberData, setCommiteeMemberData] = useState([]);
@@ -233,6 +235,11 @@ const CommiteeMembers = () => {
     <div className="h-screen overflow-auto py-5">
       <div className="mt-14">
         <div className="flex justify-end p-4 cm_header">
+    <div className="h-screen overflow-auto p-8">
+      <div className="pt-16">
+      <BreadCrumb/>
+
+        <div>
           <button
             className="text-white px-4 py-2 rounded modal_opn_btn"
             onClick={openModal}

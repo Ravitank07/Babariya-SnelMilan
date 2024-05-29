@@ -17,16 +17,20 @@ import Occupation from './Components/Utility/Occupation';
 import Commitee from './Components/Utility/Commitee';
 import CommiteeMembers from './Components/CommiteeMembers';
 import Navbar from './Components/Navbar';
+import News from './Components/News';
+import Business from './Components/Business'
+import Report from './Components/Report';
+import Logout from './Components/Logout';
 
 const AppLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [navbarVisible, setNavbarVisible] = useState(true);
+
 
   return (
     <div className={`app-container ${sidebarOpen ? '' : 'sidebar-closed'}`}>
-      <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
+      <Sidebar open={sidebarOpen} />
       <div className="content-container">
-        <Navbar open={sidebarOpen} visible={navbarVisible} />
+        <Navbar open={sidebarOpen} setOpen={setSidebarOpen} />
         <div className="content">
           {children}
         </div>
@@ -54,6 +58,10 @@ function App() {
         <Route exact path='/occupation' element={<AppLayout><Occupation /></AppLayout>} />
         <Route exact path='/commitee' element={<AppLayout><Commitee /></AppLayout>} />
         <Route exact path='/commitee-members' element={<AppLayout><CommiteeMembers /></AppLayout>} />
+        <Route exact path='/news' element={<AppLayout><News /></AppLayout>} />
+        <Route exact path='/business' element={<AppLayout><Business /></AppLayout>} />
+        <Route exact path='/reports' element={<AppLayout><Report /></AppLayout>} />
+        <Route exact path='/logout' element={<AppLayout><Logout /></AppLayout>} />
       </Routes>
     </Router>
   );

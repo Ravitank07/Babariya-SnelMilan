@@ -4,13 +4,12 @@ import Modal from 'react-modal';
 import './Members.css';
 import { IoMdArrowDropdown } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
+import BreadCrumb from './Modal/BreadCrumb'
 
 Modal.setAppElement('#root');
 
 const Members = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [navbarVisible, setNavbarVisible] = useState(true);
   const [gender, setGender] = useState('Male');
   const [status, setStatus] = useState('married');
   const [dropdownOpenVillage, setDropdownOpenVillage] = useState(false);
@@ -18,13 +17,12 @@ const Members = () => {
   const [dropdownOpenDis, setDropdownOpenDis] = useState(false);
   const [dropdownOpenEducation, setDropdownOpenEducation] = useState(false);
   const [dropdownOpenBloodGroup, setDropdownOpenBloodGroup] = useState(false);
-
   const [selectedVillage, setSelectedVillage] = useState('Select Village');
   const [selectedTaluka, setSelectedTaluka] = useState('Select Taluko');
   const [selectedDistrict, setSelectedDistrict] = useState('Select District');
   const [selectedEducation, setSelectedEducation] = useState('Select Education');
   const [selectedBloodGroup, setSelectedBloodGroup] = useState('Select Blood Group');
-  
+
   const [districts, setDistricts] = useState([]);
 
   useEffect(() => {
@@ -42,14 +40,10 @@ const Members = () => {
 
   const openModal = () => {
     setModalIsOpen(true);
-    setSidebarOpen(false);
-    setNavbarVisible(false);
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
-    setSidebarOpen(true);
-    setNavbarVisible(true);
   };
 
   const toggleDownVillage = () => {
@@ -93,12 +87,14 @@ const Members = () => {
   };
 
   return (
-    <div className='py-20'>
-      <div className='ml-auto mr-[2rem] my-[2rem] bg-black text-white w-[14rem] flex justify-center items-center px-7 py-4 btn-submit rounded-lg'>
-        <FaUserPlus className='text-[14px] mr-3 text-white' />
-        <button onClick={openModal}><p className='text-white font-semibold'>Add Member</p></button>
+    <div className='pt-[6rem] px-5 h-screen overflow-auto'>
+      <div className='flex justify-between items-center'>
+        <BreadCrumb />
+        <div className='ml-auto mr-[2rem]  bg-black text-white w-[14rem] flex justify-center items-center px-7 h-[2.1rem] btn-submit rounded-lg'>
+          <FaUserPlus className='text-[14px] mr-3 text-white' />
+          <button onClick={openModal}><p className='text-white font-semibold'>Add Member</p></button>
+        </div>
       </div>
-      <hr />
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -156,7 +152,7 @@ const Members = () => {
                   <span className="custom-radio-label mt-2 ml-1">Married</span>
                 </label>
                 <label className="form flex items-center ml-2">
-                  <input type="radio" name="status" className="custom-radio" value="unmarried" checked={status  === 'unmarried'} onChange={() => setStatus('unmarried')} />
+                  <input type="radio" name="status" className="custom-radio" value="unmarried" checked={status === 'unmarried'} onChange={() => setStatus('unmarried')} />
                   <span className="custom-radio-label mt-2 ml-1">Unmarried</span>
                 </label>
               </div>

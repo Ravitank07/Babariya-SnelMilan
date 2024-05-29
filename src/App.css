@@ -40,6 +40,7 @@
 
 .content {
   background-color: #F0F0F9;
+  /* height: 100vh; */
 }
 .btn-submit {
   background-color: rgb(116, 203, 209);
