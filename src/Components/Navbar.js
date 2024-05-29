@@ -13,7 +13,7 @@ const Navbar = ({ open, visible }) => {
 
   return (
     <>
-      <nav className={`navbar fixed top-0 left-0 text-black px-4 py-2 z-50 duration-500 h-20 ${open ? 'ml-[16rem]' : 'ml-[6rem]'} w-full flex items-center justify-between`}>
+      <nav className={`navbar fixed top-0 left-0 text-black px-4 py-2 z-10 duration-500 h-20 ${open ? 'ml-[22rem]' : 'ml-[6rem]'} w-full flex items-center justify-between`}>
         <div className="breadcrumb text-black">
           {pathnames.length > 0 && pathnames[0] !== "" && ( // Conditionally render Home link
             <Link to="/home" className="text-black hover:underline">

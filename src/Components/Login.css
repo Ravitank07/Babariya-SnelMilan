@@ -11,5 +11,14 @@
 input.username,
 input.password {
     font-size: 2rem; 
-    padding: 1rem; 
+    padding: 0.5rem;
+    outline: none;
+    border: 1px solid #c2c2cb;
+}
+
+.lgn_btn,
+.reg_btn,
+.vrf_btn {
+    background-color: #6999E1;
+    cursor: pointer;
 }

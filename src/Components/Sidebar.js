@@ -41,8 +41,8 @@ const Sidebar = ({ open, setOpen }) => {
       ],
     },
     {
-      title: "Commitee",
-      path: "/commitee",
+      title: "Commitee Members",
+      path: "/commitee-members",
       icon: <MdOutlineGroups2 className="text-[1.5rem]" />,
     },
 
@@ -59,7 +59,7 @@ const Sidebar = ({ open, setOpen }) => {
     <div>
       <div
         className={`sidebar-bg h-screen py-5 pt-8 ${
-          open ? "w-[16rem]" : "w-[6rem]"
+          open ? "w-[22rem]" : "w-[6rem]"
         } relative duration-500 z-30`}
       >
         <FaAngleRight
@@ -86,7 +86,7 @@ const Sidebar = ({ open, setOpen }) => {
           </h1>
         </div>
 
-        <ul className="pt-[4rem] px-2 sidebar_main">
+        <ul className="pt-[4rem] px-6 sidebar_main">
           {Menus.map((menu, index) => (
             <React.Fragment key={index}>
               <Link to={menu.path}>
@@ -124,7 +124,7 @@ const Sidebar = ({ open, setOpen }) => {
                   {menu.submenuItems.map((submenuItem, subIndex) => (
                     <Link to={submenuItem.path} key={subIndex}>
                       <li
-                        className={`text-white flex nest-list items-center gap-x-4 cursor-pointer py-2 px-[2rem] hover:text-black rounded-sm ${
+                        className={`text-white p-2 mr-3 flex nest-list items-center gap-x-4 cursor-pointer py-2 px-[2rem] hover:text-black rounded-sm ${
                           !open && "scale-0"
                         }`}
                       >

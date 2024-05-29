@@ -35,7 +35,7 @@ const Village = () => {const [data, setData] = useState([]);
   };
   const handleSubmit = async () => {
     if (!inputValue) {
-      alert("Please Enter Ditrict First");
+      alert("Please Enter Village First");
     } else if (inputValue && edit) {
       try {
         const response = await axios.put(
@@ -119,13 +119,13 @@ const Village = () => {const [data, setData] = useState([]);
         <div className="flex items-center justify-between mt-5">
           <div>
             <input
-              className="w-[20rem] p-2 mr-5 text-black search_input_box"
+              className="w-[20rem] p-2 mr-5 text-black search_input"
               type="text"
               placeholder="Enter Village Here For Add"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
             />
-            <button onClick={handleSubmit} className="search_bttn">
+            <button onClick={handleSubmit} className="search_btn">
               Add
             </button>
           </div>
@@ -133,7 +133,7 @@ const Village = () => {const [data, setData] = useState([]);
           <div>
             <div className="w-fit relative">
               <input
-                className="w-[20rem] p-2 text-black search_input_box"
+                className="w-[20rem] p-2 text-black search_input"
                 type="text"
                 value={searchQuery}
                 onChange={handleSearch}
