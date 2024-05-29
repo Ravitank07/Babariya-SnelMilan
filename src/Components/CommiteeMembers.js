@@ -5,8 +5,7 @@ import { MdDelete } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
 import { CiEdit } from "react-icons/ci";
 import "./commiteemembers.css";
-import BreadCrumb from './Modal/BreadCrumb'
-
+import BreadCrumb from "./Modal/BreadCrumb";
 
 const CommiteeMembers = () => {
   const [commiteeMemberData, setCommiteeMemberData] = useState([]);
@@ -131,7 +130,7 @@ const CommiteeMembers = () => {
   };
 
   const handleSubmit = async (e) => {
-    debugger
+    debugger;
     e.preventDefault();
     const newErrors = validateForm();
 
@@ -235,162 +234,169 @@ const CommiteeMembers = () => {
     <div className="h-screen overflow-auto py-5">
       <div className="mt-14">
         <div className="flex justify-end p-4 cm_header">
-    <div className="h-screen overflow-auto p-8">
-      <div className="pt-16">
-      <BreadCrumb/>
+          <div className="h-screen overflow-auto p-8">
+            <div className="pt-16">
+              <BreadCrumb />
 
-        <div>
-          <button
-            className="text-white px-4 py-2 rounded modal_opn_btn"
-            onClick={openModal}
-          >
-            Add Committee Member
-          </button>
-        </div>
-        <Modal isOpen={isModalOpen} onClose={closeModal}>
-          <div>
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-bold">
-                {edit ? "Edit Committee Member" : "Add Committee Member"}
-              </h2>
-              <button
-                className="bg-red-500 text-white px-4 py-2 rounded mt-4"
-                onClick={closeModal}
-              >
-                Close
-              </button>
-            </div>
-            <form onSubmit={edit ? handleUpdate : handleSubmit}>
-              {edit ? (
-                ""
-              ) : (
-                <div className="w-[30rem] grid grid-cols-2 items-center mb-3">
-                  <label>Select Committee:</label>
-                  <select
-                    name="commitee"
-                    value={formData.commitee}
-                    onChange={handleChange}
-                    className="search_input"
-                  >
-                    <option value="">--Select--</option>
-                    {commiteeData.map((option) => (
-                      <option key={option._id} value={option.commitee}>
-                        {option.commitee}
-                      </option>
-                    ))}
-                  </select>
-                  {errors.commitee && (
-                    <span className="text-red-500">{errors.commitee}</span>
-                  )}
-                </div>
-              )}
-              <div className="w-[30rem] grid grid-cols-2 items-center mb-3">
-                <label>Name:</label>
-                <input
-                  type="text"
-                  name="memberName"
-                  value={formData.memberName}
-                  onChange={handleChange}
-                  className="search_input"
-                />
-                {errors.memberName && (
-                  <span className="text-red-500">{errors.memberName}</span>
-                )}
-              </div>
-              <div className="w-[30rem] grid grid-cols-2 items-center mb-3">
-                <label>Select Village:</label>
-                <select
-                  name="village"
-                  value={formData.village}
-                  onChange={handleChange}
-                  className="search_input"
+              <div>
+                <button
+                  className="text-white px-4 py-2 rounded modal_opn_btn"
+                  onClick={openModal}
                 >
-                  <option value="">--Select--</option>
-                  {villageData.map((option) => (
-                    <option key={option._id} value={option.name}>
-                      {option.name}
-                    </option>
-                  ))}
-                </select>
-                {errors.village && (
-                  <span className="text-red-500">{errors.village}</span>
-                )}
+                  Add Committee Member
+                </button>
               </div>
-              <div className="w-[30rem] grid grid-cols-2 items-center mb-3">
-                <label>Mobile Number:</label>
-                <input
-                  type="text"
-                  name="mobile"
-                  value={formData.mobile}
-                  onChange={handleChange}
-                  className="search_input"
-                />
-                {errors.mobile && (
-                  <span className="text-red-500">{errors.mobile}</span>
-                )}
-              </div>
-              <div className="w-fit m-auto">
-                {edit ? (
-                  <button type="submit" className="btn">
-                    Edit
-                  </button>
-                ) : (
-                  <button type="submit" className="btn">
-                    Submit
-                  </button>
-                )}
-              </div>
-            </form>
-          </div>
-        </Modal>
+              <Modal isOpen={isModalOpen} onClose={closeModal}>
+                <div>
+                  <div className="flex justify-between items-center mb-4">
+                    <h2 className="text-lg font-bold">
+                      {edit ? "Edit Committee Member" : "Add Committee Member"}
+                    </h2>
+                    <button
+                      className="bg-red-500 text-white px-4 py-2 rounded mt-4"
+                      onClick={closeModal}
+                    >
+                      Close
+                    </button>
+                  </div>
+                  <form onSubmit={edit ? handleUpdate : handleSubmit}>
+                    {edit ? (
+                      ""
+                    ) : (
+                      <div className="w-[30rem] grid grid-cols-2 items-center mb-3">
+                        <label>Select Committee:</label>
+                        <select
+                          name="commitee"
+                          value={formData.commitee}
+                          onChange={handleChange}
+                          className="search_input"
+                        >
+                          <option value="">--Select--</option>
+                          {commiteeData.map((option) => (
+                            <option key={option._id} value={option.commitee}>
+                              {option.commitee}
+                            </option>
+                          ))}
+                        </select>
+                        {errors.commitee && (
+                          <span className="text-red-500">
+                            {errors.commitee}
+                          </span>
+                        )}
+                      </div>
+                    )}
+                    <div className="w-[30rem] grid grid-cols-2 items-center mb-3">
+                      <label>Name:</label>
+                      <input
+                        type="text"
+                        name="memberName"
+                        value={formData.memberName}
+                        onChange={handleChange}
+                        className="search_input"
+                      />
+                      {errors.memberName && (
+                        <span className="text-red-500">
+                          {errors.memberName}
+                        </span>
+                      )}
+                    </div>
+                    <div className="w-[30rem] grid grid-cols-2 items-center mb-3">
+                      <label>Select Village:</label>
+                      <select
+                        name="village"
+                        value={formData.village}
+                        onChange={handleChange}
+                        className="search_input"
+                      >
+                        <option value="">--Select--</option>
+                        {villageData.map((option) => (
+                          <option key={option._id} value={option.name}>
+                            {option.name}
+                          </option>
+                        ))}
+                      </select>
+                      {errors.village && (
+                        <span className="text-red-500">{errors.village}</span>
+                      )}
+                    </div>
+                    <div className="w-[30rem] grid grid-cols-2 items-center mb-3">
+                      <label>Mobile Number:</label>
+                      <input
+                        type="text"
+                        name="mobile"
+                        value={formData.mobile}
+                        onChange={handleChange}
+                        className="search_input"
+                      />
+                      {errors.mobile && (
+                        <span className="text-red-500">{errors.mobile}</span>
+                      )}
+                    </div>
+                    <div className="w-fit m-auto">
+                      {edit ? (
+                        <button type="submit" className="btn">
+                          Edit
+                        </button>
+                      ) : (
+                        <button type="submit" className="btn">
+                          Submit
+                        </button>
+                      )}
+                    </div>
+                  </form>
+                </div>
+              </Modal>
 
-        <div>
-          <div className="w-fit relative">
-            <input
-              className="w-[20rem] p-2 text-black search_input"
-              type="text"
-              value={searchQuery}
-              onChange={handleSearch}
-              placeholder="Search Member"
-            />
-            <IoSearch className="absolute text-xl top-[1.1rem] right-[1.2rem]" />
+              <div>
+                <div className="w-fit relative">
+                  <input
+                    className="w-[20rem] p-2 text-black search_input"
+                    type="text"
+                    value={searchQuery}
+                    onChange={handleSearch}
+                    placeholder="Search Member"
+                  />
+                  <IoSearch className="absolute text-xl top-[1.1rem] right-[1.2rem]" />
+                </div>
+              </div>
+
+              <table className="data_tbl">
+                <thead>
+                  <tr>
+                    <th>No.</th>
+                    <th>Committee</th>
+                    <th>Committee Members Name</th>
+                    <th>Village</th>
+                    <th>Mobile</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredData.map((i, index) => (
+                    <tr key={i._id}>
+                      <td>{index + 1}</td>
+                      <td>{i.commitee}</td>
+                      <td>{i.memberName}</td>
+                      <td>{i.village}</td>
+                      <td>{i.mobile}</td>
+                      <td>
+                        <button onClick={() => handleEdit(i._id)}>
+                          <CiEdit className="end_btn" />
+                        </button>
+                      </td>
+                      <td>
+                        <button onClick={() => handleDelete(i._id)}>
+                          <MdDelete className="end_btn" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-
-        <table className="data_tbl">
-          <thead>
-            <tr>
-              <th>No.</th>
-              <th>Committee</th>
-              <th>Committee Members Name</th>
-              <th>Village</th>
-              <th>Mobile</th>
-              <th>Update</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredData.map((i, index) => (
-              <tr key={i._id}>
-                <td>{index + 1}</td>
-                <td>{i.commitee}</td>
-                <td>{i.memberName}</td>
-                <td>{i.village}</td>
-                <td>{i.mobile}</td>
-                <td>
-                  <button onClick={() => handleEdit(i._id)}>
-                    <CiEdit className="end_btn" />
-                  </button>
-                </td>
-                <td>
-                  <button onClick={() => handleDelete(i._id)}>
-                    <MdDelete className="end_btn" />
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </div>
     </div>
   );
