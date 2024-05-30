@@ -140,7 +140,7 @@ const Village = () => {const [data, setData] = useState([]);
                 onChange={handleSearch}
                 placeholder="Search Village"
               />
-              <IoSearch className="absolute text-xl top-[0.6rem] right-[0.5rem]" />
+              <IoSearch className="absolute text-xl top-[1rem] right-[0.7rem]" />
             </div>
           </div>
         </div>

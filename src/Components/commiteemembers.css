@@ -1,21 +1,20 @@
-.cm_header {
-  background-color: #e8edf2;
-  box-shadow: 0px 3px 5px #fefefe;
-}
-
 .modal_opn_btn {
   background-color: #637eea;
 }
 
 .search_input {
   outline: none;
-  border-radius: 30px;
+  border-radius: 20px;
   padding: 16px 22px;
-  background-color: #F1F1F1;
+  background-color: #fff;
 }
 
 .btn {
   background-color: #0099ff;
   border-radius: 26px;
   padding: 16px 34px;
+}
+
+.mdl_input {
+  background-color: #e9edf4 !important;
 }
