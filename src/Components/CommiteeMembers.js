@@ -41,8 +41,7 @@ const CommiteeMembers = () => {
     setEditId(null); // Reset edit ID
   };
 
-  const Authorization =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NGYwZTcxNmJlMGEyYWY0NmZkNjg5NyIsImlhdCI6MTcxNjc5MzAwMCwiZXhwIjoxNzE3MDUyMjAwfQ.WANtKZKls-9zoplsdQu3wkcuJ2Gj9QuOe3-2ZHvb368";
+  const Authorization = process.env.REACT_APP_AUTHORIZATION_TOKEN;
 
   useEffect(() => {
     fetchCommiteeData();
