@@ -12,8 +12,7 @@ const Village = () => {const [data, setData] = useState([]);
   const [edit, setEdit] = useState(false);
   const [editId, setEditId] = useState(null);
 
-  const Authorization =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NGYxYzE5YjAxNGIyZGMwYjE3MzRhZiIsImlhdCI6MTcxNjg5NjMzMiwiZXhwIjoxNzE3MTU1NTMyfQ.xRpGkfWSlhnVE-nXaA5Jxp-XxmoHOlsjwQUWpRW6gBkXxmoHOlsjwQUWpRW6gBk";
+  const Authorization = process.env.REACT_APP_AUTHORIZATION_TOKEN;
 
   useEffect(() => {
     fetchData();

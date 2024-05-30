@@ -4,7 +4,7 @@ import "./district.css";
 import { CiEdit } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
-import BreadCrumb from '../Modal/BreadCrumb';
+import BreadCrumb from "../Modal/BreadCrumb";
 
 const District = () => {
   const [data, setData] = useState([]);
@@ -13,8 +13,7 @@ const District = () => {
   const [edit, setEdit] = useState(false);
   const [editId, setEditId] = useState(null);
 
-  const Authorization =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NGYxYzE5YjAxNGIyZGMwYjE3MzRhZiIsImlhdCI6MTcxNjk4MzIzNSwiZXhwIjoxODExNjU2MDM1fQ.9RMAqVZRApDPnLSzjcQ1mmJa7Z9pdPiZn4DGI0gVHFg";
+  const Authorization = process.env.REACT_APP_AUTHORIZATION_TOKEN;
 
   useEffect(() => {
     fetchData();
@@ -60,7 +59,6 @@ const District = () => {
         console.error("Error:", error);
       }
       setInputValue("");
-      // setEditId(null)
       setEdit(false);
     } else {
       try {
@@ -117,7 +115,7 @@ const District = () => {
   return (
     <div className="district_main_container p-8">
       <div className="mt-16">
-        <BreadCrumb/>
+        <BreadCrumb />
         <div className="flex items-center justify-between mt-5">
           <div>
             <input

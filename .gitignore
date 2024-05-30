@@ -5,6 +5,13 @@
 /.pnp
 .pnp.js
 
+# Ignore environment variables file
+.env
+
+# Include package.json and package-lock.json explicitly
+!package.json
+!package-lock.json
+
 # testing
 /coverage
 
