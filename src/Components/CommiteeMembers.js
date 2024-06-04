@@ -13,33 +13,15 @@ const CommiteeMembers = () => {
   const [edit, setEdit] = useState(false);
   const [editId, setEditId] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
-
   const [formData, setFormData] = useState({
     commitee: "",
     memberName: "",
     village: "",
     mobile: "",
   });
-
   const [commiteeData, setCommiteeData] = useState([]);
   const [villageData, setVillageData] = useState([]);
   const [errors, setErrors] = useState({});
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setFormData({
-      commitee: "",
-      memberName: "",
-      village: "",
-      mobile: "",
-    });
-    setEdit(false);
-    setEditId(null);
-  };
 
   const Authorization = process.env.REACT_APP_AUTHORIZATION_TOKEN;
 
@@ -129,35 +111,28 @@ const CommiteeMembers = () => {
   };
 
   const handleSubmit = async (e) => {
-    debugger;
     e.preventDefault();
     const newErrors = validateForm();
 
-    // if (Object.keys(newErrors).length === 0) {
-    try {
-      const response = await axios.post(
-        "http://localhost:8000/api/commiteeMember/add",
-        formData,
-        {
-          headers: {
-            Authorization: Authorization,
-          },
-        }
-      );
-      setCommiteeMemberData([...commiteeMemberData, response.data.data]);
-      setFormData({
-        commitee: "",
-        memberName: "",
-        village: "",
-        mobile: "",
-      });
-      closeModal();
-    } catch (error) {
-      console.error("Error adding committee member:", error);
+    if (Object.keys(newErrors).length === 0) {
+      try {
+        const response = await axios.post(
+          "http://localhost:8000/api/commiteeMember/add",
+          formData,
+          {
+            headers: {
+              Authorization: Authorization,
+            },
+          }
+        );
+        setCommiteeMemberData([...commiteeMemberData, response.data.data]);
+        closeModal();
+      } catch (error) {
+        console.error("Error adding committee member:", error);
+      }
+    } else {
+      setErrors(newErrors);
     }
-    // } else {
-    //   setErrors(newErrors);
-    // }
   };
 
   const handleUpdate = async (e) => {
@@ -227,6 +202,23 @@ const CommiteeMembers = () => {
     } catch (error) {
       console.error("Error:", error);
     }
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setFormData({
+      commitee: "",
+      memberName: "",
+      village: "",
+      mobile: "",
+    });
+    setEdit(false);
+    setEditId(null);
+    setErrors({});
   };
 
   return (
