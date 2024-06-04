@@ -14,6 +14,7 @@ const District = () => {
   const [editId, setEditId] = useState(null);
 
   const Authorization = process.env.REACT_APP_AUTHORIZATION_TOKEN;
+  console.log("akdjbfkajsdbksjdvkjsdbkvsdgb", Authorization);
 
   useEffect(() => {
     fetchData();
