@@ -1,10 +1,9 @@
 import React from 'react';
 import { RiMenuUnfoldLine } from "react-icons/ri";
 import { BsPersonVcardFill } from "react-icons/bs";
-import { useNavigate } from 'react-router-dom';
-import { IoMdLogOut } from "react-icons/io";
-import { IoNotificationsSharp } from "react-icons/io5";
 import { FaUserLargeSlash } from "react-icons/fa6";
+import { useNavigate } from 'react-router-dom';
+import { IoNotificationsSharp } from "react-icons/io5";
 import './Navbar.css';
 
 const Navbar = ({ open, setOpen }) => {
@@ -22,7 +21,7 @@ const Navbar = ({ open, setOpen }) => {
       <div className={`flex items-center ml-auto ${open ? 'mr-[22rem]' : 'mr-[6rem]'}`}>
         <BsPersonVcardFill className='mx-2 text-2xl' />
         <IoNotificationsSharp className='mx-2 text-2xl' />
-        <IoMdLogOut className='mx-2 text-2xl' onClick={handleLogout} />
+        <FaUserLargeSlash className='mx-2 text-2xl' onClick={handleLogout} />
       </div>
     </nav>
   );

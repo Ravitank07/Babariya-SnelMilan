@@ -12,9 +12,14 @@ import { BsNewspaper } from "react-icons/bs";
 import { TiBusinessCard } from "react-icons/ti";
 import { TbReportSearch } from "react-icons/tb";
 import { TbLogout } from "react-icons/tb";
+import { useNavigate } from 'react-router-dom';
 const Sidebar = ({ open, setOpen }) => {
   const [submenuOpenIndex, setSubmenuOpenIndex] = useState(null);
-
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    navigate('/');
+  };
   const Menus = [
     {
       title: "Home",
@@ -50,9 +55,8 @@ const Sidebar = ({ open, setOpen }) => {
     { title: "News/Message", path: "/news",icon:<BsNewspaper className="text-[1.5rem]"/>},
     { title: "Business Detail", path: "/business",icon:<TiBusinessCard className="text-[1.5rem]"/> },
     { title: "Reports", path: "/reports",icon:<TbReportSearch className="text-[1.5rem]"/> },
-    { title: "Logout", path: "/logout",icon:<TbLogout className="text-[1.5rem]"/> }
+    { title: "Logout", path: "/",icon:<TbLogout className="text-[1.5rem]" onClick={handleLogout}/> }
   ];
-
   const toggleSubmenu = (index) => {
     setSubmenuOpenIndex(submenuOpenIndex === index ? null : index);
   };

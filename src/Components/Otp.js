@@ -1,15 +1,14 @@
-import React, { useState, useEffect, useContext } from "react";
-import "./Login.css";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import { UserRoleContext } from "../Context/UserRoleContext"
+import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { TokenContext } from '../Context/TokenProvider';
 
-const OTPPage = () => {
+const OTPPage = ({ onVerify }) => {
   const [otp, setOTP] = useState(new Array(6).fill(""));
   const [error, setError] = useState("");
-  const {role , setRole} = useContext(UserRoleContext)
   const navigate = useNavigate();
   const location = useLocation();
   const { mobile } = location.state || {};
+  const { setToken } = useContext(TokenContext); // Use setToken from context
 
   useEffect(() => {
     if (!mobile) {
@@ -41,7 +40,7 @@ const OTPPage = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:8000/api/admin/verifyOtp/${mobile}`,
+        `http://localhost:8000/api/verifyOtp/${mobile}`,
         {
           method: "POST",
           headers: {
@@ -52,14 +51,13 @@ const OTPPage = () => {
       );
 
       if (!response.ok) {
-        throw new Error(`Please Enter Correct OTP`);
+        throw new Error("Please Enter Correct OTP");
       }
-
       const result = await response.json();
-      console.log("result", result);
-      setRole(result.data.role);
-      console.log(role);
-      navigate("/home");
+      setToken(result.token); // Set the token in context
+      const role = result.role;
+      onVerify(role, result.token); // Pass token to onVerify
+      navigate(role === 'admin' ? '/home' : '/userProfile');
     } catch (error) {
       console.error("Login error:", error);
       setError(error.message);
