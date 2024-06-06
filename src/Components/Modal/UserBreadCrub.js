@@ -9,7 +9,7 @@ const BreadCrumb = () => {
         <>
             <div className="breadcrumb text-black">
                 {pathnames.length > 0 && pathnames[0] !== "" && ( // Conditionally render Home link
-                    <Link to="/home" className="text-black hover:underline">
+                    <Link to="/userProfile" className="text-black hover:underline">
                         <IoHome className='text-2xl' />
                     </Link>
                 )}
@@ -17,7 +17,16 @@ const BreadCrumb = () => {
                     const to = `/${pathnames.slice(0, index + 1).join('/')}`;
                     const isLast = index === pathnames.length - 1;
 
-                
+                    if (value.toLowerCase() === 'utility') {
+                        return (
+                            <span key={to}>
+                                <span className="mx-2">/</span>
+                                <Link to={to} className="text-black hover:underline">
+                                    Utility
+                                </Link>
+                            </span>
+                        );
+                    }
                     return (
                         <span key={to} className='text-2xl'>
                             <span className="mx-2">/</span>

@@ -12,4 +12,4 @@ export const UserRoleProvider = ({ children }) => {
   );
 };
 
-// export const useUserRole = () => useContext(UserRoleContext);
+export const useUserRole = () => useContext(UserRoleContext);
