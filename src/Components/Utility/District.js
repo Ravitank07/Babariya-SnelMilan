@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import "./district.css";
 import { CiEdit } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
 import BreadCrumb from "../Modal/BreadCrumb";
+import { TokenContext } from "../../../src/Context/TokenProvider";
 
 const District = () => {
   const [data, setData] = useState([]);
@@ -13,8 +14,11 @@ const District = () => {
   const [edit, setEdit] = useState(false);
   const [editId, setEditId] = useState(null);
 
-  const Authorization = process.env.REACT_APP_AUTHORIZATION_TOKEN;
-  console.log("akdjbfkajsdbksjdvkjsdbkvsdgb", Authorization);
+  //   const { token } = useContext(TokenContext);
+
+  // console.log("akdjbfkajsdbksjdvkjsdbkvsdgb", Authorization);
+
+  const { token } = useContext(TokenContext);
 
   useEffect(() => {
     fetchData();
@@ -26,7 +30,7 @@ const District = () => {
         "http://localhost:8000/api/district/viewAll",
         {
           headers: {
-            Authorization: `${Authorization}`,
+            Authorization: `${token}`,
           },
         }
       );
@@ -48,7 +52,7 @@ const District = () => {
           },
           {
             headers: {
-              Authorization: `${Authorization}`,
+              Authorization: `${token}`,
             },
           }
         );
@@ -70,7 +74,7 @@ const District = () => {
           },
           {
             headers: {
-              Authorization: `${Authorization}`,
+              Authorization: `${token}`,
             },
           }
         );
@@ -95,7 +99,7 @@ const District = () => {
     try {
       await axios.delete(`http://localhost:8000/api/district/delete/${id}`, {
         headers: {
-          Authorization: `${Authorization}`,
+          Authorization: `${token}`,
         },
       });
       const updatedData = data.filter((item) => item._id !== id);

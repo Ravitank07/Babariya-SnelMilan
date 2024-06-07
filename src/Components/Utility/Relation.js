@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import axios from "axios";
 import "./relation.css";
 import { CiEdit } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
 import BreadCrumb from '../Modal/BreadCrumb'
+import { TokenContext } from "../../Context/TokenProvider";
 
 const Relation = () => {
   const [data, setData] = useState([]);
@@ -13,7 +14,8 @@ const Relation = () => {
   const [edit, setEdit] = useState(false);
   const [editId, setEditId] = useState(null);
 
-  const Authorization = process.env.REACT_APP_AUTHORIZATION_TOKEN;
+    const { token } = useContext(TokenContext);
+
 
   useEffect(() => {
     fetchData();
@@ -25,7 +27,7 @@ const Relation = () => {
         "http://localhost:8000/api/relation/viewAll",
         {
           headers: {
-            Authorization: `${Authorization}`,
+            Authorization:  `${token}`,
           },
         }
       );
@@ -47,7 +49,7 @@ const Relation = () => {
           },
           {
             headers: {
-              Authorization: `${Authorization}`,
+              Authorization:  `${token}`,
             },
           }
         );
@@ -70,7 +72,7 @@ const Relation = () => {
           },
           {
             headers: {
-              Authorization: `${Authorization}`,
+              Authorization:  `${token}`,
             },
           }
         );
@@ -95,7 +97,7 @@ const Relation = () => {
     try {
       await axios.delete(`http://localhost:8000/api/relation/delete/${id}`, {
         headers: {
-          Authorization: `${Authorization}`,
+          Authorization:  `${token}`,
         },
       });
       const updatedData = data.filter((item) => item._id !== id);
