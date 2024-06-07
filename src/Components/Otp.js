@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { TokenContext } from '../Context/TokenProvider';
+import { useCookies } from 'react-cookie';
 
 const OTPPage = ({ onVerify }) => {
   const [otp, setOTP] = useState(new Array(6).fill(""));
@@ -8,7 +9,8 @@ const OTPPage = ({ onVerify }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { mobile } = location.state || {};
-  const { setToken } = useContext(TokenContext); // Use setToken from context
+  const { setToken } = useContext(TokenContext);
+  const [cookies, setCookie] = useCookies(['role', 'token']);
 
   useEffect(() => {
     if (!mobile) {
@@ -57,6 +59,8 @@ const OTPPage = ({ onVerify }) => {
       setToken(result.token); // Set the token in context
       const role = result.role;
       onVerify(role, result.token); // Pass token to onVerify
+      setCookie('role', role, { path: '/' });
+      setCookie('token', result.token, { path: '/' });
       navigate(role === 'admin' ? '/home' : '/userProfile');
     } catch (error) {
       console.error("Login error:", error);

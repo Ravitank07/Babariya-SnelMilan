@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import axios from "axios";
 import Modal from "./Modal/Modal";
 import { MdDelete } from "react-icons/md";
@@ -6,6 +6,7 @@ import { IoSearch } from "react-icons/io5";
 import { CiEdit } from "react-icons/ci";
 import "./commiteemembers.css";
 import BreadCrumb from "./Modal/BreadCrumb";
+import { TokenContext } from "../Context/TokenProvider"
 
 const CommiteeMembers = () => {
   const [commiteeMemberData, setCommiteeMemberData] = useState([]);
@@ -23,7 +24,8 @@ const CommiteeMembers = () => {
   const [villageData, setVillageData] = useState([]);
   const [errors, setErrors] = useState({});
 
-  const Authorization = process.env.REACT_APP_AUTHORIZATION_TOKEN;
+    const { token } = useContext(TokenContext);
+
 
   useEffect(() => {
     fetchCommiteeData();
@@ -37,7 +39,7 @@ const CommiteeMembers = () => {
         "http://localhost:8000/api/commitee/viewAll",
         {
           headers: {
-            Authorization: `${Authorization}`,
+            Authorization:  `${token}`,
           },
         }
       );
@@ -53,7 +55,7 @@ const CommiteeMembers = () => {
         "http://localhost:8000/api/village/viewAll",
         {
           headers: {
-            Authorization: `${Authorization}`,
+            Authorization:  `${token}`,
           },
         }
       );
@@ -69,7 +71,7 @@ const CommiteeMembers = () => {
         "http://localhost:8000/api/commiteeMember/list",
         {
           headers: {
-            Authorization: `${Authorization}`,
+            Authorization:  `${token}`,
           },
         }
       );
@@ -121,7 +123,7 @@ const CommiteeMembers = () => {
           formData,
           {
             headers: {
-              Authorization: Authorization,
+              Authorization: token,
             },
           }
         );
@@ -146,7 +148,7 @@ const CommiteeMembers = () => {
           formData,
           {
             headers: {
-              Authorization: Authorization,
+              Authorization: token,
             },
           }
         );
@@ -193,7 +195,7 @@ const CommiteeMembers = () => {
         `http://localhost:8000/api/CommiteeMember/delete/${id}`,
         {
           headers: {
-            Authorization: `${Authorization}`,
+            Authorization:  `${token}`,
           },
         }
       );

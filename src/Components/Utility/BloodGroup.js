@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import "./bloodgroup.css";
 import { CiEdit } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
 import BreadCrumb from '../Modal/BreadCrumb'
+import { TokenContext } from "../../../src/Context/TokenProvider";
 
 const BloodGroup = () => {
   const [data, setData] = useState([]);
@@ -13,8 +14,7 @@ const BloodGroup = () => {
   const [edit, setEdit] = useState(false);
   const [editId, setEditId] = useState(null);
 
-  const Authorization = process.env.REACT_APP_AUTHORIZATION_TOKEN;
-
+  const {token} = useContext(TokenContext)
   useEffect(() => {
     fetchData();
   }, []);
@@ -25,7 +25,7 @@ const BloodGroup = () => {
         "http://localhost:8000/api/bloodgroup/viewAll",
         {
           headers: {
-            Authorization: `${Authorization}`,
+            Authorization: `Bearer ${token}`, // Use 'token' instead of 'Authorization'
           },
         }
       );
@@ -47,7 +47,7 @@ const BloodGroup = () => {
           },
           {
             headers: {
-              Authorization: `${Authorization}`,
+              Authorization:  `Bearer ${token}`, // Use 'token' instead of 'Authorization'
             },
           }
         );
@@ -70,7 +70,7 @@ const BloodGroup = () => {
           },
           {
             headers: {
-              Authorization: `${Authorization}`,
+              Authorization:  `Bearer ${token}`, // Use 'token' instead of 'Authorization'
             },
           }
         );
@@ -95,7 +95,7 @@ const BloodGroup = () => {
     try {
       await axios.delete(`http://localhost:8000/api/bloodgroup/delete/${id}`, {
         headers: {
-          Authorization: `${Authorization}`,
+          Authorization:  `Bearer ${token}`, // Use 'token' instead of 'Authorization'
         },
       });
       const updatedData = data.filter((item) => item._id !== id);
@@ -177,4 +177,4 @@ const BloodGroup = () => {
   );
 }
 
-export default BloodGroup
+export default BloodGroup;

@@ -1,10 +1,11 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useContext } from 'react'
 import "./taluka.css"
 import { CiEdit } from 'react-icons/ci';
 import { IoSearch } from 'react-icons/io5';
 import { MdDelete } from 'react-icons/md';
 import BreadCrumb from '../Modal/BreadCrumb'
+import { TokenContext } from "../../Context/TokenProvider";
 
 const Taluka = () => {
   const [data, setData] = useState([]);
@@ -13,7 +14,8 @@ const Taluka = () => {
   const [edit, setEdit] = useState(false);
   const [editId, setEditId] = useState(null);
 
-  const Authorization = process.env.REACT_APP_AUTHORIZATION_TOKEN;
+    const { token } = useContext(TokenContext);
+
 
   useEffect(() => {
     fetchData();
@@ -25,7 +27,7 @@ const Taluka = () => {
         "http://localhost:8000/api/taluka/viewAll",
         {
           headers: {
-            Authorization: `${Authorization}`,
+            Authorization:  `${token}`,
           },
         }
       );
@@ -46,7 +48,7 @@ const Taluka = () => {
           },
           {
             headers: {
-              Authorization: `${Authorization}`,
+              Authorization:  `${token}`,
             },
           }
         );
@@ -69,7 +71,7 @@ const Taluka = () => {
           },
           {
             headers: {
-              Authorization: `${Authorization}`,
+              Authorization:  `${token}`,
             },
           }
         );
@@ -94,7 +96,7 @@ const Taluka = () => {
     try {
       await axios.delete(`http://localhost:8000/api/taluka/delete/${id}`, {
         headers: {
-          Authorization: `${Authorization}`,
+          Authorization:  `${token}`,
         },
       });
       const updatedData = data.filter((item) => item._id !== id);
