@@ -48,8 +48,7 @@
 
 .submenu_wrapper {
   padding-left: revert;
-  height: 14rem;
-  overflow: auto;
+  height: 7rem;
 }
 
 .submenu_wrapper::-webkit-scrollbar {

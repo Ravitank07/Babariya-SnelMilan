@@ -7,11 +7,10 @@ import { FaUsersViewfinder } from "react-icons/fa6";
 import { GrDocumentUpdate } from "react-icons/gr";
 import Modal from "./Modal/Modal";
 import axios from 'axios';
-import logo from '../Images/Ravi.jpg'
 import './Members.css';
 import BreadCrumb from './Modal/BreadCrumb';
 import { TokenContext } from "../Context/TokenProvider";
-
+import { toast } from 'react-toastify';
 const Members = () => {
   const [mainMembers, setMainMembers] = useState([]);
   const [data, setData] = useState([]);
@@ -172,7 +171,7 @@ const Members = () => {
     }
     
     // Append the photo file to the FormData
-    formDataToSend.append('photo', formData.photo);
+    // formDataToSend.append('photo', formData.photo);
     
     try {
       const response = await axios.post("http://localhost:8000/api/member/add", formDataToSend, {
@@ -199,11 +198,14 @@ const Members = () => {
         bloodGroup: ''
       });
       setInputValue('');
+      toast.success("Data Submit Successfully")
       closeModal();
+
     } catch (error) {
       console.log("Error adding Main Members", error);
     }
   };
+  
   const handleUpdate = async (e) => {
     e.preventDefault();
     if (Object.keys(errors).length === 0) {
@@ -247,10 +249,12 @@ const Members = () => {
     setSearchQuery(e.target.value);
   };
 
-  // const filteredData = mainMembers?.filter((item) => item.name.toLowerCase().includes(searchQuery.toLowerCase()));
+
+  const filteredData = mainMembers?.filter((item) => item.name.toLowerCase().includes(searchQuery.toLowerCase()));
 
   const handleEdit = (id) => {
     const selectedMember = mainMembers.find((item) => item._id === id);
+    console.log(selectedMember.photo, "OOOOOOOOOOOOooooooOOOOOOOOOO");
     setFormData({
       name: selectedMember.name,
       mobile: selectedMember.mobile,
@@ -486,7 +490,7 @@ const Members = () => {
               {viewMemberData && (
                 <div className="view-modal-content form-grid">
                   <div className="column mt-5">
-                    <img src={imageUrl} alt="Member Photo" />
+                    <img src={`http://localhost:8000/${viewMemberData.photo}`} alt="Member Photo" className='h-[22rem]'/>
                     {/* <img src={logo} alt="logo" width={"250px"} className='ml-auto mr-auto rounded-3xl' /> */}
                     <h1 className='flex mt-3  justify-evenly'>
                       <span className='text-xl text-indigo-600 ml-2'>{viewMemberData.name}</span>
@@ -561,10 +565,10 @@ const Members = () => {
               </tr>
             </thead>
             <tbody>
-              {mainMembers.map((member, index) => (
+              {filteredData.map((member, index) => (
                 <tr key={member._id} className="hover:bg-gray-100">
                   <td className="py-2 px-4 border-b text-center">{index + 1}</td>
-                  <td className='py-2 px-4 border-b'><img src={imageUrl} alt="Member Photo" />
+                  <td className='py-2 px-4 border-b'><img src={`http://localhost:8000/${member.photo}`} className='ml-auto mr-auto h-[5rem]' alt="Member Photo" />
                   </td>
                   <td className="py-2 px-4 border-b text-center">{member.name}</td>
                   <td className="py-2 px-4 border-b text-center">{member.mobile}</td>

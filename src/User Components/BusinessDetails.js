@@ -36,6 +36,8 @@ const BusinessDetails = () => {
             whatsappContact: '',
             address: ''
         });
+        setEdit(false);
+        setEditId(null);
     };
 
     const handleChange = (e) => {
@@ -70,8 +72,6 @@ const BusinessDetails = () => {
                     item._id === editId ? response.data.data : item
                 );
                 setBusinessList(updatedBusinessList);
-                setEdit(false);
-                setEditId(null);
             } else {
                 const response = await axios.post(
                     'http://localhost:8000/api/businessDetails/member/add',
@@ -98,8 +98,8 @@ const BusinessDetails = () => {
                     'Authorization': `Bearer ${token}`
                 }
             });
-            if (Array.isArray(response.data)) {
-                setBusinessList(response.data);
+            if (Array.isArray(response.data.data)) {
+                setBusinessList(response.data.data);
             } else {
                 console.error('Error fetching business list: response data is not an array');
             }
@@ -152,12 +152,6 @@ const BusinessDetails = () => {
     return (
         <div className='pt-[6rem] px-5 h-screen overflow-auto'>
             <UserBreadCrumb />
-            <button
-                className='modal-button flex mt-2 ml-auto'
-                onClick={openModal}
-            >
-                Add Business
-            </button>
             {isModalOpen && (
                 <div className='modal-overlay'>
                     <div className='modal-content'>
@@ -226,7 +220,14 @@ const BusinessDetails = () => {
                                     className='w-full px-3 py-2 border-2 border-black rounded'
                                     onChange={handleChange}
                                     required
+                                    autoComplete={'off'}
                                     maxLength={10}
+                                    onKeyPress={(e) => {
+                                        const validation = /^[0-9\b]+$/;
+                                        if (!validation.test(e.key)) {
+                                          e.preventDefault();
+                                        }
+                                      }}
                                 />
                             </div>
                             <div className='mb-4'>
@@ -262,48 +263,58 @@ const BusinessDetails = () => {
                 </div>
             )}
             <div className='mt-6'>
-                <h2 className='text-2xl mb-4'>Business List</h2>
-                <div className="flex items-center justify-between mt-5">
-                    <div className="w-fit relative">
-                        <input
-                            className="w-[20rem] p-2 text-black search_input"
-                            type="text"
-                            value={searchQuery}
-                            onChange={handleSearch}
-                            placeholder="Search Business"
-                        />
-                        <IoSearch className="absolute text-xl top-[1.1rem] right-[1.2rem]" />
+                <div className='flex justify-between items-center'>
+                    <h2 className='text-2xl'>Business List</h2>
+                    <div className='flex items-center'>
+                        <div className="flex items-center justify-between">
+                            <div className="w-fit relative my-auto">
+                                <input
+                                    className="w-[20rem] text-black search_input"
+                                    type="text"
+                                    value={searchQuery}
+                                    onChange={handleSearch}
+                                    placeholder="Search Business"
+                                />
+                                <IoSearch className="absolute text-xl top-[1.1rem] right-[1.2rem]" />
+                            </div>
+                        </div>
+                        <button
+                            className='modal-button-2 flex ml-3'
+                            onClick={openModal}
+                        >
+                            <p className='m-auto'>Add Business</p>
+                        </button>
                     </div>
                 </div>
                 <div className='mt-6'>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                    {filteredData.map((business, index) => (
-                        <div key={business._id} className="bg-white shadow-md rounded-lg p-4 flex flex-col">
-                            <img src={`http://localhost:8000/${business.ownerPhoto}`} alt='Owner' className='h-40 w-full object-cover rounded-t-lg' />
-                            <div className="flex-grow flex flex-col justify-between">
-                                <div>
-                                    <p><span className="font-bold">Owner Name:</span> {business.ownerName}</p>
-                                    <p><span className="font-bold">Business Name:</span> {business.businessName}</p>
-                                    <p><span className="font-bold">Category:</span> {business.category}</p>
-                                    <p><span className="font-bold">Whatsapp Number:</span> {business.whatsappContact}</p>
-                                    <p><span className="font-bold">Address:</span> {business.address}</p>
-                                </div>
-                                <div className="mt-4">
-                                    <button onClick={() => handleUpdate(business._id)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-2 rounded">
-                                        Edit
-                                    </button>
-                                    <button onClick={() => handleDelete(business._id)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                                        Delete
-                                    </button>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 p-5">
+                        {filteredData.map((business) => (
+                            <div key={business._id} className="bg-white shadow-md rounded-lg overflow-hidden">
+                                <img src={`http://localhost:8000/${business.ownerPhoto}`} alt='Owner' className='h-56 w-full object-cover p-4' />
+                                <div className="p-4 flex flex-col justify-between">
+                                    <div>
+                                        <p className="text-gray-800 flex justify-between"><span className="font-bold">Owner Name:</span> {business.ownerName}</p>
+                                        <p className="text-gray-800 flex justify-between"><span className="font-bold">Business Name:</span> {business.businessName}</p>
+                                        <p className="text-gray-800 flex justify-between"><span className="font-bold">Category:</span> {business.category}</p>
+                                        <p className="text-gray-800 flex justify-between"><span className="font-bold">Whatsapp Number:</span> {business.whatsappContact}</p>
+                                        <p className="text-gray-800 flex justify-between"><span className="font-bold">Address:</span><span className='inline-flex ml-auto'>{business.address}</span></p>
+                                    </div>
+                                    <div className="mt-4 flex justify-end space-x-2">
+                                        <button onClick={() => handleUpdate(business._id)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                            Edit
+                                        </button>
+                                        <button onClick={() => handleDelete(business._id)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                            Delete
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-);
+    );
 };
 
 export default BusinessDetails;
