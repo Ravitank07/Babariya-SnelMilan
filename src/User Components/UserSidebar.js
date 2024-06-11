@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./sidebar.css";
+import "./UserSidebar.css";
 import logo from "../Images/logo.png";
 import { MdDashboardCustomize } from "react-icons/md";
 import { BsChevronDown } from "react-icons/bs";
@@ -30,8 +30,12 @@ const Sidebar = ({ open, setOpen }) => {
     },
     {
       title: "Business Detail",
-      path: "/businessDetails",
       icon: <MdBusinessCenter className="text-[1.5rem]" />,
+      submenu: true,
+      submenuItems: [
+        { title: "Business Overview", path: "/businessOverview" },
+        { title: "Add Business", path: "/businessDetails" },
+      ],
     },
     {
       title: "News/Message",
@@ -42,7 +46,6 @@ const Sidebar = ({ open, setOpen }) => {
       title: "Logout",
       path: "/",
       icon: <TbLogout className="text-[1.5rem]" onClick={handleLogout}/>,
-     
     }
   ];
 
@@ -72,7 +75,9 @@ const Sidebar = ({ open, setOpen }) => {
                     if (menu.onClick) {
                       menu.onClick();
                     }
-                    toggleSubmenu(index);
+                    if (menu.submenu) {
+                      toggleSubmenu(index);
+                    }
                   }}
                 >
                   <span className="block float-left">

@@ -1,15 +1,21 @@
-import React from 'react'
-import UserBreadCrumb from "../Components/Modal/UserBreadCrub";
+import React, { useContext } from 'react';
+import { NewsContext } from '../Context/NewsContext';
 
 const NewsMessage = () => {
-    return (
-        <>
-            <div className='pt-[6rem] px-5 h-screen overflow-auto'>
-                <UserBreadCrumb />
-                <h1>This is News Message Page</h1>
-            </div>
-        </>
-    )
-}
+  const { news } = useContext(NewsContext);
 
-export default NewsMessage
+  return (
+    <div className='p-5'>
+      <h1 className='text-xl font-bold mb-4'>News</h1>
+      <ul>
+        {news.map((item, index) => (
+          <li key={index} className='border-b p-2'>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default NewsMessage;

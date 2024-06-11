@@ -46,22 +46,22 @@
   color: #0099ff;
 }
 
-.submenu_wrapper {
+.submenu_wrapper-2 {
   padding-left: revert;
   height: 14rem;
   overflow: auto;
 }
 
-.submenu_wrapper::-webkit-scrollbar {
+.submenu_wrapper-2::-webkit-scrollbar {
   width: 6px;
 }
 
-.submenu_wrapper::-webkit-scrollbar-thumb {
+.submenu_wrapper-2::-webkit-scrollbar-thumb {
   background: #888;
   border-radius: 5px;
 }
 
-.submenu_wrapper::-webkit-scrollbar-thumb:hover {
+.submenu_wrapper-2::-webkit-scrollbar-thumb:hover {
   background: #2358C0ca;
 }
 @media (min-height:100vh ) {

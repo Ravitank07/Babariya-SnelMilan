@@ -121,7 +121,7 @@ const Sidebar = ({ open, setOpen }) => {
                 </li>
               </Link>
               {menu.submenu && submenuOpenIndex === index && open && (
-                <ul className="submenu_wrapper">
+                <ul className="submenu_wrapper-2">
                   {menu.submenuItems.map((submenuItem, subIndex) => (
                     <Link to={submenuItem.path} key={subIndex}>
                       <li
